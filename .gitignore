@@ -1,0 +1,28 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# OS files
+.DS_Store
+._.DS_Store
+
+# Nextflow run artifacts
+.nextflow/
+.nextflow.log*
+work/
+results/
+PIPELINE_OUTPUTS/
+*.trace.txt
+report_*.html
+pipeline_dag_*.html
+pipeline_timeline_*.html
+slurm-*.out
+slurm_logs/
+logs/
