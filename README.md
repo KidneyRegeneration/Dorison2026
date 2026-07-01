@@ -1,6 +1,6 @@
-# Welcome to Pod-Colocalisation
+# Dorison2026
 
-## This repository provides code to do general colocalisation quantification when provided with three images: DAPI, NPHS1 and <other>
+## This repository provides code to do general quantification when provided with three images: DAPI, NPHS1 and NPHS2 within glomerular and podocyte regions.
 
 ## Repository layout
 
