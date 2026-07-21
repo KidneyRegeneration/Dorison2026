@@ -357,14 +357,15 @@ process COMBINE_COLOC_CSVS {
         tuple path(csvs), path(meta_files)
 
     output:
-        path "combined_coloc.csv", emit: combined_csv
+        path "${csv_name}", emit: combined_csv
 
     script:
+    csv_name = "${file(params.publishDir).name}.csv"
     """
     python3 /group/kidn4/ACTIVE/COLOCALISATION_PIPELINE/general_coloc/quantify/combine_csvs.py \
         -i ${csvs.join(' ')} \
         -m ${meta_files.join(' ')} \
-        -o combined_coloc.csv
+        -o ${csv_name}
     """
 }
 process ORGANIZE_QC_BY_CONDITION {

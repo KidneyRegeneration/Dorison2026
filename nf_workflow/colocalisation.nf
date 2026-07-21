@@ -206,15 +206,16 @@ process GET_MEAN_CSVS {
     val(csvs)
 
     output:
-    path "mean.csv", emit: mean_csv
-    
+    path "${csv_name}", emit: mean_csv
+
     script:
+    csv_name = "${file(params.publishDir).name}.csv"
 
     """
     python /group/kidn4/ACTIVE/COLOCALISATION_PIPELINE/general_coloc/quantify/combine_results.py \
     -i ${csvs.join(' ')} \
-    -o mean.csv
-    
+    -o ${csv_name}
+
     """
 
 }

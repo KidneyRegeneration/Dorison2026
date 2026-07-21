@@ -214,14 +214,15 @@ process GET_MEAN_CSVS {
         tuple path(csvs), path(meta_files)
 
     output:
-        path "mean.csv", emit: mean_csv
+        path "${csv_name}", emit: mean_csv
 
     script:
+    csv_name = "${file(params.publishDir).name}.csv"
     """
     python /group/kidn4/ACTIVE/COLOCALISATION_PIPELINE/general_coloc/quantify/combine_csvs.py \
         -i ${csvs.join(' ')} \
         -m ${meta_files.join(' ')} \
-        -o mean.csv
+        -o ${csv_name}
     """
 }
 
