@@ -275,17 +275,24 @@ def modified_manders(
     thresh=None
 ) -> float:
     """
-    Modified Manders coefficient for *signal* restricted to *coloc_mask*.
+    Modified Manders coefficient for *signal* (A) restricted to *coloc_mask* (B).
 
-        M = sum(signal[coloc_mask]) / sum(signal[global_mask])
+        Without a global mask G:
+            M(A in B) = sum(A * [B > 0]) / sum(A)
+
+        With a global mask G:
+            M(A in B) = sum(A * [B > 0] * [G > 0]) / sum(A * [G > 0])
+
+        where [.] is 1 where the condition holds and 0 otherwise, and sums run
+        over all pixels.
 
     Parameters
     ----------
-    signal      : 2-D float array, the raw intensity channel being measured.
-    coloc_mask  : boolean 2-D array, positive pixels of the *other* marker.
-    global_mask : optional boolean 2-D array; when provided, the denominator
-                  (total signal) is restricted to pixels within this mask,
-                  and coloc_mask is also intersected with it.
+    signal      : 2-D float array, the raw intensity channel being measured (A).
+    coloc_mask  : boolean 2-D array, positive pixels of the *other* marker (B).
+    global_mask : optional boolean 2-D array; when provided, both the
+                  numerator and denominator are restricted to pixels within
+                  this mask (i.e. coloc_mask is also intersected with it).
 
     Returns NaN when total signal within the global mask is zero.
     """
