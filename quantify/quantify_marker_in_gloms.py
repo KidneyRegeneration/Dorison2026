@@ -124,8 +124,8 @@ class stainQuantifier:
             self.stain_mean_in_gloms.append(channel[self.glom_mask > 0].mean())
             self.stain_mean_outside_gloms.append(channel[self.glom_mask == 0].mean())
             self.stain_median.append(np.median(channel))
-            self.stain_max.append(channel.max())
-            self.stain_min.append(channel.min())
+            self.stain_max.append(channel[self.glom_mask > 0].max())
+            self.stain_min.append(channel[self.glom_mask > 0].min())
             
             print(f"Stats: Mean = {self.dapi_mean}, Median = {self.stain_median}, Max = {self.dapi_max}, Min = {self.dapi_min}")
     
@@ -218,8 +218,8 @@ class stainQuantifier:
             for i, name in enumerate(self.stain_names):
                 f.create_dataset(f'{name}_img_mean', data=self.stain_mean[i])
                 f.create_dataset(f'{name}_img_median', data=self.stain_median[i])
-                f.create_dataset(f'{name}_img_max', data=self.stain_max[i])
-                f.create_dataset(f'{name}_img_min', data=self.stain_min[i])
+                f.create_dataset(f'{name}_marker_channel_max_in_gloms', data=self.stain_max[i])
+                f.create_dataset(f'{name}_marker_channel_min_in_gloms', data=self.stain_min[i])
                 f.create_dataset(f'{name}_mean_in_gloms', data=self.stain_mean_in_gloms[i])
                 f.create_dataset(f'{name}_mean_out_gloms', data=self.stain_mean_outside_gloms[i])
                 f.create_dataset(f'{name}_per_glom', data=self.stain_values[i])
