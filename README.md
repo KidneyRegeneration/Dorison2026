@@ -1,6 +1,6 @@
 # Dorison2026
 
-## This repository provides code to do general quantification when provided with three images: DAPI, NPHS1 and NPHS2 within glomerular and podocyte regions.
+## This repository provides code to do general quantification  and colocalisation within glomerular and podocyte regions.
 
 ## Repository layout
 
@@ -8,7 +8,7 @@
 - `quantify/` — per-podocyte / per-glomerulus marker quantification and result aggregation
 - `plotting/` — result plotting scripts
 - `qc/` — QC image/PowerPoint generation
-- `colocalisation/` — Manders coefficient (M1/M2) and PCC calculation
+- `colocalisation/` — Manders coefficient (M1/M2) 
 - `nf_workflow/` — the main Nextflow pipeline, its config, and an example samplesheet
 - `standardised_pipelines/` — example Nextflow pipelines (`pipeline.nf`, `nextflow.config`, SLURM submission script) showing how the scripts above are orchestrated for specific analysis types (single/multi marker in glomeruli and/or nuclei, dual-marker colocalisation)
 
